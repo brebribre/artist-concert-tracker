@@ -1,20 +1,25 @@
 import { groupExist } from "@/lib/artist";
 import React, { useState } from "react";
 
+interface ArtistBio {
+    groupName:string,
+    koreanGroupName:string,
+    debutDate:string,
+    company:string,
+    members:string,
+    originalMembers:string,
+    fanName:string,
+    active:string
+  }
+
 export default function SearchComponent(props:any) {
     const [value, setValue] = useState("");
 
     async function handleInput(){
-
-
         if(await groupExist(value)){
             props.handleCallback(value);
         }
-
-        
     }
-
-
 
     return (
         <div className="flex items-center">
