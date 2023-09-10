@@ -51,4 +51,57 @@ export async function groupExist(name:string){
     }
 }
 
+interface Concert {
+    eventName:string,
+    startDate:string,
+    venue:string,
+    city:string,
+    country:string,
+    image:string
+  }
+
+export async function getConcertByGroupName(name:string){
+    let formatName = name;
+    formatName = formatName.replace(/ /g, "+");
+
+    const url = 'https://www.jambase.com/jb-api/v1/events?artistName='+ formatName + '&apikey=4ca92282-713c-4912-8a55-066afff640d9';
+    const options = {method: 'GET', headers: {Accept: 'application/json'}};
+
+
+    try {
+        let concerts: Concert[] = [];
+        const response = await fetch(url, options);
+        const data = await response.json();
+        const list = data["events"];
+       
+        let len = list.length;
+        let tmp:Concert;
+        for(let i = 0; i < len ; i++){
+            tmp = {
+                eventName: list[i].name,
+                startDate: list[i].startDate,
+                venue: list[i].location.name,
+                city: list[i].location.address.addressLocality,
+                country: list[i].location.address.addressCountry.name,
+                image: list[i].image
+            }
+            let artistName = list[i].performer[0].name.toLowerCase();
+            let type = list[i]["@type"];
+
+            if(type === "Festival"){
+                concerts.push(tmp);
+            }else{
+                if(artistName === name.toLowerCase()){
+                    concerts.push(tmp);
+                }
+            }
+        }
+        
+        return concerts;
+    } catch (error) {
+        console.error(error);
+    }
+    return [];
+    
+}
 

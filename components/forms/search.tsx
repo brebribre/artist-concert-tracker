@@ -15,10 +15,10 @@ interface ArtistBio {
 export default function SearchComponent(props:any) {
     const [value, setValue] = useState("");
 
-    async function handleInput(){
-        if(await groupExist(value)){
-            props.handleCallback(value);
-        }
+    const handleInput = () => {
+        console.log(value);
+        props.handleCallback(value);
+
     }
 
     return (
@@ -30,7 +30,7 @@ export default function SearchComponent(props:any) {
                     placeholder="Search..."
                     onChange = {e => setValue(e.target.value)}
                 />
-                <button className="px-4 text-white bg-purple-600 rounded " onClick = {() => handleInput()}>
+                <button className="px-4 text-white bg-purple-600 rounded " onClick = {handleInput}>
                     Search
                 </button>
             </div>
