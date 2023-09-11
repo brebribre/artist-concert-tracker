@@ -37,9 +37,9 @@ interface Concert {
 
 export default function Home() {
   const [input, setInput] = useState("");
-  const [alert, setAlert] = useState(false);
+  const [initialAlert, setInitialAlert] = useState(false);
   const [concerts, setConcerts] = useState<Concert[]>([]);
-  const [concertExist, setConcertExist] = useState(false);
+  const [concertExist, setConcertExist] = useState(true);
   
   const [displayedGroup, setDisplayedGroup] = useState<ArtistBio | null>({
     groupName : "",
@@ -54,7 +54,7 @@ export default function Home() {
 
   const handleInput = async (childData:string) => {
     setInput(childData);
-    setAlert(true);
+    setInitialAlert(true);
     
     let tmp = await getConcertByGroupName(childData);
     setConcerts(tmp);
@@ -81,7 +81,7 @@ export default function Home() {
       </div>
     
 
-      {concertExist?<h1 className = "text-md font-light text-slate-300 pt-4">Searching for "{input}"</h1>:<h1></h1>}
+      {initialAlert?<h1 className = "text-md font-light text-slate-300 pt-4">Searching for "{input}"</h1>:<h1></h1>}
 
       {concertExist?<p></p>:<p className="pt-4 text-red-500 text-sm">No results found. Check your spelling or try writing the original name of the artist instead of acronyms.</p>}
 
