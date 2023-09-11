@@ -78,6 +78,8 @@ export async function getConcertByGroupName(name:string){
         let len = list.length;
         let tmp:Concert;
         for(let i = 0; i < len ; i++){
+            let offerExist = list[i].offers.length > 0;
+            console.log(offerExist);
             tmp = {
                 eventName: list[i].name,
                 startDate: list[i].startDate,
@@ -85,13 +87,11 @@ export async function getConcertByGroupName(name:string){
                 city: list[i].location.address.addressLocality,
                 country: list[i].location.address.addressCountry.name,
                 image: list[i].image,
-                offer: list[i].offers[0].url
+                offer: offerExist?list[i].offers[0].url:""
                 
             }
             let artistName = list[i].performer[0].name.toLowerCase();
             let type = list[i]["@type"];
-
-            console.log(list[i].offers[0].url)
 
             if(type === "Festival"){
                 concerts.push(tmp);

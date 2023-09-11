@@ -29,11 +29,14 @@ export default function ConcertCard(props:any) {
             <p className = "text-sm text-slate-400">Start date: {props.concert?.startDate}</p>
             <p className = "text-sm text-slate-400">Venue: {props.concert?.venue}</p>
             <p className = "text-sm text-slate-400">{props.concert?.city}, {props.concert?.country}</p>
-            <a href={props.concert?.offer} target="_blank">
+            {
+              props.concert.offer===""?<p className = "pt-3 text-red-500 text-sm">No ticket found</p>:<a href={props.concert?.offer} target="_blank">
               <button className="px-3 py-1 text-sm mt-2 text-slate-200 bg-purple-600 rounded-sm " >
                       Find Offer 
               </button>
             </a>
+            }
+           
         </div>
       </div>
     )
