@@ -63,9 +63,8 @@ interface Concert {
   }
 
 export async function getConcertByGroupName(name:string){
-    let formatName = name;
+    let formatName = name.trim();
     formatName = formatName.replace(/ /g, "+");
-
     const url = 'https://www.jambase.com/jb-api/v1/events?artistName='+ formatName + '&apikey=4ca92282-713c-4912-8a55-066afff640d9';
     const options = {method: 'GET', headers: {Accept: 'application/json'}};
 
@@ -105,11 +104,12 @@ export async function getConcertByGroupName(name:string){
             //check validity
             let artistName = list[i].performer[0].name.toLowerCase();
             let type = list[i]["@type"];
+      
 
             if(type === "Festival" && artistExistInArray(name, performersTmp)){
                 concerts.push(tmp);
             }else{
-                if(artistName === name.toLowerCase()){
+                if(artistName === name.trim().toLowerCase()){
                     concerts.push(tmp);
                 }
             }

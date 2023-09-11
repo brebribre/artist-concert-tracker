@@ -23,9 +23,12 @@ export async function getCity(longitude:number, latitude:number) {
   
 export function artistExistInArray(name:string, list:string[]){
     for(let i = 0; i < list.length ; i++){
-        if(list[i]?.toLowerCase() === name.toLowerCase()){
+        if(list[i]?.toLowerCase() === name.trim().toLowerCase()){
+            
+
             return true;
         }
     }
     return false;
 }
+

@@ -16,9 +16,7 @@ export default function SearchComponent(props:any) {
     const [value, setValue] = useState("");
 
     const handleInput = () => {
-        console.log(value);
         props.handleCallback(value);
-
     }
 
     return (
