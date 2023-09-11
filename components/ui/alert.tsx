@@ -2,8 +2,8 @@
 function Alert(props:any){
     return (
         <div className="p-2 my-5 bg-indigo-800 items-center text-indigo-100 leading-none rounded-full flex lg:inline-flex" role="alert">
-            <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">{props.tag}</span>
-            <span className="text-xs font-semibold mr-2 text-left flex-auto md:text-sm">{props.text}</span>
+            <span className="flex rounded-full pl-5 sm:pl-2  bg-indigo-500 uppercase pr-2 py-1 text-xs font-bold mr-3">{props.tag}</span>
+            <span className="font-semibold mr-2 text-left flex-auto text-sm">{props.text}</span>
             
         </div>        
     )
