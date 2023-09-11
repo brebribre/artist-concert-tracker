@@ -9,7 +9,6 @@ export async function getCity(longitude:number, latitude:number) {
             fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=41ab124125c54e9b94fd7197d869c55b`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data.features[0].properties.city);
                 return data.features[0].properties.city;
             })
             .catch((error) => {
@@ -22,5 +21,11 @@ export async function getCity(longitude:number, latitude:number) {
     }
 }
   
-
-  
+export function artistExistInArray(name:string, list:string[]){
+    for(let i = 0; i < list.length ; i++){
+        if(list[i]?.toLowerCase() === name.toLowerCase()){
+            return true;
+        }
+    }
+    return false;
+}

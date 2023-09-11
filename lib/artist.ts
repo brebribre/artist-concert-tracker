@@ -1,3 +1,4 @@
+import { artistExistInArray } from "./utils";
 
 export async function getGirlGroupByName(name:string){
     const url = 'https://k-pop.p.rapidapi.com/girl-groups?q='+ name + '&by=Group%20Name';
@@ -13,7 +14,6 @@ export async function getGirlGroupByName(name:string){
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result["data"][0]);
 
         if(result.count === 0){
             return "Group doesn't exist."
@@ -90,7 +90,6 @@ export async function getConcertByGroupName(name:string){
                 performersTmp.push(list[i].performer[j]["name"]);
             }
 
-            console.log(performersTmp)
 
             tmp = {
                 eventName: list[i].name,
@@ -107,7 +106,7 @@ export async function getConcertByGroupName(name:string){
             let artistName = list[i].performer[0].name.toLowerCase();
             let type = list[i]["@type"];
 
-            if(type === "Festival"){
+            if(type === "Festival" && artistExistInArray(name, performersTmp)){
                 concerts.push(tmp);
             }else{
                 if(artistName === name.toLowerCase()){
@@ -123,4 +122,5 @@ export async function getConcertByGroupName(name:string){
     return [];
     
 }
+
 

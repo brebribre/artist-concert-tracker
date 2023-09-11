@@ -36,6 +36,7 @@ export default function ConcertCard(props:any) {
                   props.concert.performer?.map((item:string,index:number)=>{
                   return <Tag 
                       text= {item}
+                      key = {index}
                   />
                 })
               }
