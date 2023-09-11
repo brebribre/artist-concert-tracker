@@ -57,7 +57,8 @@ interface Concert {
     venue:string,
     city:string,
     country:string,
-    image:string
+    image:string,
+    offer:string
   }
 
 export async function getConcertByGroupName(name:string){
@@ -83,10 +84,14 @@ export async function getConcertByGroupName(name:string){
                 venue: list[i].location.name,
                 city: list[i].location.address.addressLocality,
                 country: list[i].location.address.addressCountry.name,
-                image: list[i].image
+                image: list[i].image,
+                offer: list[i].offers[0].url
+                
             }
             let artistName = list[i].performer[0].name.toLowerCase();
             let type = list[i]["@type"];
+
+            console.log(list[i].offers[0].url)
 
             if(type === "Festival"){
                 concerts.push(tmp);

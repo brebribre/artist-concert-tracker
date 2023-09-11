@@ -29,7 +29,8 @@ interface Concert {
   venue:string,
   city:string,
   country:string,
-  image:string
+  image:string,
+  offer:string
 }
 
 export default function Home() {
