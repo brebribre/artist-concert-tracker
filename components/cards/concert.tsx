@@ -14,7 +14,7 @@ interface Concert {
 
 export default function ConcertCard(props:any) {
     return (
-      <div className = "flex bg-slate-900 rounded-md border-white mt-4">
+      <div className = "flex bg-slate-900 rounded-md border-white mt-4 xl:w-1/2">
         <div className = "my-auto flex-none hidden md:block">
             <Image
                 src={props.concert?.image}
@@ -31,7 +31,7 @@ export default function ConcertCard(props:any) {
             <p className = "text-sm text-slate-400">{props.concert?.city}, {props.concert?.country}</p>
             {
               props.concert.offer===""?<p className = "pt-3 text-red-500 text-sm">No ticket found</p>:<a href={props.concert?.offer} target="_blank">
-              <button className="px-3 py-1 text-sm mt-2 text-slate-200 bg-purple-600 rounded-sm " >
+              <button className="border-solid border-2 border-purple-600 px-2 text-sm mt-3 py-1 text-white bg-purple-600 rounded transform transition duration-200 hover:bg-black hover:border-white" >
                       Find Offer 
               </button>
             </a>

@@ -30,7 +30,7 @@ export default function SearchComponent(props:any) {
                     placeholder="Search by name..."
                     onChange = {e => setValue(e.target.value)}
                 />
-                <button className="px-4 text-white bg-purple-600 rounded " onClick = {handleInput}>
+                <button className=" border-solid border-2 border-purple-600 px-4 text-white bg-purple-600 rounded transform transition duration-200 hover:bg-black hover:border-white " onClick = {handleInput}>
                     Search
                 </button>
             </div>

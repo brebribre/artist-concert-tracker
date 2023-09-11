@@ -88,8 +88,15 @@ export default function Home() {
 
   return (
     <div className = "ml-5 mr-5 pt-1">
-      <h1 className = "text-2xl font-semibold pb-4">Find Upcoming Concerts</h1>
-      <SearchComponent handleCallback={handleInput}/>
+      <div className = "">
+        <div className = "md:w-1/3 mr-10">
+          <h1 className = "text-2xl font-semibold pb-2">Find Upcoming K-Pop Concerts.</h1>
+          <p className = "text-sm text-slate-500 mb-4">Never miss another concert again! Look up your favorite K-pop artists' upcoming concert and find the best ticket offers.</p>  
+        </div>
+        
+        <SearchComponent handleCallback={handleInput}/>
+      </div>
+    
 
       {concertExist?<h1 className = "text-xl font-bold pt-4">Searching for "{input}"</h1>:<h1></h1>}
       
