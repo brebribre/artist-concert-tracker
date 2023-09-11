@@ -35,7 +35,7 @@ interface Concert {
 export default function Home() {
   const [input, setInput] = useState("");
   const [concerts, setConcerts] = useState<Concert[]>([]);
-  const [concertExist, setConcertExist] = useState(true);
+  const [concertExist, setConcertExist] = useState(false);
   
   const [displayedGroup, setDisplayedGroup] = useState<ArtistBio | null>({
     groupName : "",
@@ -78,6 +78,7 @@ export default function Home() {
 
     let tmp = await getConcertByGroupName(childData);
     setConcerts(tmp);
+    setConcertExist(true);
   }
 
 
@@ -85,17 +86,18 @@ export default function Home() {
  
 
   return (
-    <div className = "pl-5 pt-5">
+    <div className = "ml-5 mr-5 pt-1">
+      <h1 className = "text-2xl font-semibold pb-4">Find Upcoming Concerts</h1>
       <SearchComponent handleCallback={handleInput}/>
-      <h1 className = "text-3xl font-bold pt-5 pb-5">Searching for {input}</h1>
-     
-      <h1 className = "text-xl font-bold pt-2">Upcoming Concerts</h1>
+
+      {concertExist?<h1 className = "text-xl font-bold pt-4">Searching for "{input}"</h1>:<h1></h1>}
+      
       {concertExist?concerts?.map((item,index)=>{
             return <ConcertCard 
                 concert = {item}
                 key = {index}
             />
-          }):<p className="pt-2 text-red-500">Concert don't exist</p>}
+          }):<p className="pt-2 text-red-500"></p>}
      
     </div>
   )
