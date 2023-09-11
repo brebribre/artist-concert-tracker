@@ -3,6 +3,7 @@
 import ArtistCard from "@/components/cards/artist";
 import ConcertCard from "@/components/cards/concert";
 import SearchComponent from "@/components/forms/search";
+import Alert from "@/components/ui/alert";
 import Button from "@/components/ui/button";
 import { getConcertByGroupName, getGirlGroupByName } from "@/lib/artist";
 //app/page.tsx
@@ -30,7 +31,8 @@ interface Concert {
   city:string,
   country:string,
   image:string,
-  offer:string
+  offer:string,
+  performer:string[]
 }
 
 export default function Home() {
@@ -83,22 +85,19 @@ export default function Home() {
   }
 
 
-
- 
-
   return (
     <div className = "ml-5 mr-5 pt-1">
+      <Alert tag="Coming soon" text="Bookmark artists and get notified for new concerts!" className = "md:w-1/2"/>
       <div className = "">
-        <div className = "md:w-1/3 mr-10">
-          <h1 className = "text-2xl font-semibold pb-2">Find Upcoming K-Pop Concerts.</h1>
-          <p className = "text-sm text-slate-500 mb-4">Never miss another concert again! Look up your favorite K-pop artists' upcoming concert and find the best ticket offers.</p>  
-        </div>
-        
+        <div className = "sm:w-1/3">
+          <h1 className = "text-2xl font-semibold pb-2">Find Upcoming Concerts.</h1>
+          <p className = "text-sm text-slate-500 mb-4">Never miss another concert again! Look up your favorite artists' upcoming concerts and find the best ticket offers.</p>  
+        </div> 
         <SearchComponent handleCallback={handleInput}/>
       </div>
     
 
-      {concertExist?<h1 className = "text-xl font-bold pt-4">Searching for "{input}"</h1>:<h1></h1>}
+      {concertExist?<h1 className = "text-md font-light text-slate-300 pt-4">Searching for "{input}"</h1>:<h1></h1>}
       
       {concertExist?concerts?.map((item,index)=>{
             return <ConcertCard 

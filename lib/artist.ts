@@ -58,7 +58,8 @@ interface Concert {
     city:string,
     country:string,
     image:string,
-    offer:string
+    offer:string,
+    performer:string[]
   }
 
 export async function getConcertByGroupName(name:string){
@@ -77,9 +78,20 @@ export async function getConcertByGroupName(name:string){
        
         let len = list.length;
         let tmp:Concert;
+
         for(let i = 0; i < len ; i++){
             let offerExist = list[i].offers.length > 0;
-            console.log(offerExist);
+
+            let performersLen = list[i].performer.length
+            let performersExist = performersLen > 0;
+            let performersTmp: string[] = []
+
+            for(let j = 0; j < performersLen ; j++){
+                performersTmp.push(list[i].performer[j]["name"]);
+            }
+
+            console.log(performersTmp)
+
             tmp = {
                 eventName: list[i].name,
                 startDate: list[i].startDate,
@@ -87,9 +99,11 @@ export async function getConcertByGroupName(name:string){
                 city: list[i].location.address.addressLocality,
                 country: list[i].location.address.addressCountry.name,
                 image: list[i].image,
-                offer: offerExist?list[i].offers[0].url:""
-                
+                offer: offerExist?list[i].offers[0].url:"",
+                performer: performersExist?performersTmp:[""]
             }
+
+            //check validity
             let artistName = list[i].performer[0].name.toLowerCase();
             let type = list[i]["@type"];
 
