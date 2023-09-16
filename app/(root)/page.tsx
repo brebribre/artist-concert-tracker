@@ -67,7 +67,7 @@ export default function Home() {
       <Alert tag="Coming soon" text="Bookmark artists and get notified for new concerts!" className = "md:w-1/2"/>
       <div className = "">
         <div className = "sm:w-1/2">
-          <h1 className = "text-2xl font-semibold pb-2">Find Upcoming Concerts.</h1>
+          <h1 className = "text-2xl font-semibold pb-2 text-slate-100">Find Upcoming Concerts.</h1>
           <p className = "text-sm text-slate-500 mb-4">Never miss another concert again! Look up your favorite artists' upcoming concerts and find the best ticket offers.</p>  
         </div> 
         <SearchComponent handleCallback={handleInput}/>
