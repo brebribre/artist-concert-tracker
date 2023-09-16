@@ -33,7 +33,7 @@ export default function Artists() {
   }
 
   return (
-    <div className = "ml-5 mr-5 pt-1">
+    <div className = "ml-5 mr-5 pt-1 mb-10">
         <Alert tag="Coming soon" text="Bookmark artists and get notified for new concerts!" className = "md:w-1/2"/>
         <div className = "">
           <div className = "">
