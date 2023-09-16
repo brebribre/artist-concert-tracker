@@ -41,7 +41,7 @@ export default function Artists() {
             <p className = "text-sm text-slate-500 mb-4">Get a detailed bio of your favorite artist and get live updates on news regarding them.</p>  
           </div> 
           
-          <div className = "flex gap-8 py-2 mb-4 mt-2 border-b-2 border-purple-500 w-1/2">
+          <div className = "flex gap-8 py-2 mb-4 mt-2 border-b-2 border-purple-500 md:w-1/2">
             {displayed?<h1 className = "font-semibold text-sm text-purple-500 hover:underline" onClick= {() => {setDisplayed(true)}} >Boy Groups</h1>:<h1 className = "text-sm hover:underline" onClick= {() => {setDisplayed(true)}}>Boy Groups</h1>}
             {!displayed?<h1 className = "font-semibold text-sm text-purple-500 hover:underline" onClick= {() => {setDisplayed(false)}}>Girl Groups</h1>:<h1 className = "text-sm hover:underline" onClick= {() => {setDisplayed(false)}}>Girl Groups</h1>}
           </div>
