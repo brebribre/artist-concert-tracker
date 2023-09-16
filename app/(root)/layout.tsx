@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="">
+        <body className="bg-black">
           <Topbar/>
           {children}   
 
