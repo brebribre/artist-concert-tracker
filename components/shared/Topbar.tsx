@@ -8,10 +8,10 @@ function Topbar(props:any){
      <nav className = "topbar px-5 py-3 mb-4 bg-slate-800 ">
      
         <div className = "grid grid-cols-4">
-            <div className = "flex gap-5 col-start-1 col-end-4">
+            <div className = "flex col-start-1 col-end-4">
                 <Link href="/" className = "flex items-center gap-4">
                     <Image src="/assets/logo.svg" alt="logo" width={28} height={28} />
-                    <p className = "font-bold text-xl max-xs:hidden">Cracker</p>
+                    <p className = "font-bold text-md hidden">Cracker</p>
                 </Link>
                 <Link href="/" className = "flex items-center ml-8 text-slate-400 text-sm transform transition duration-200 hover:text-slate-300">
                     Concerts
