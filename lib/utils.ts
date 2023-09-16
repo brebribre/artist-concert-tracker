@@ -32,3 +32,9 @@ export function artistExistInArray(name:string, list:string[]){
     return false;
 }
 
+interface Group {
+    name:string,
+    link:string
+  }
+
+

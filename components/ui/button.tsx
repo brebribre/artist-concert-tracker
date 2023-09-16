@@ -1,5 +1,5 @@
 
-import { getConcertByGroupName } from "@/lib/artist";
+import { getConcertByGroupName } from "@/lib/jambase";
 import React, { useState } from "react";
 
 

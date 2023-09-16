@@ -1,17 +1,10 @@
 'use client'
 
-import ArtistCard from "@/components/cards/artist";
 import ConcertCard from "@/components/cards/concert";
 import SearchComponent from "@/components/forms/search";
 import Alert from "@/components/ui/alert";
-import Button from "@/components/ui/button";
-import { getConcertByGroupName, getGirlGroupByName } from "@/lib/artist";
-//app/page.tsx
-import { getCity } from "@/lib/utils";
-import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
+import { getConcertByGroupName } from "@/lib/jambase";
 import { useEffect, useState } from "react";
-
 
 interface ArtistBio {
   groupName:string,
@@ -73,7 +66,7 @@ export default function Home() {
     <div className = "ml-5 mr-5 pt-1">
       <Alert tag="Coming soon" text="Bookmark artists and get notified for new concerts!" className = "md:w-1/2"/>
       <div className = "">
-        <div className = "sm:w-1/3">
+        <div className = "sm:w-1/2">
           <h1 className = "text-2xl font-semibold pb-2">Find Upcoming Concerts.</h1>
           <p className = "text-sm text-slate-500 mb-4">Never miss another concert again! Look up your favorite artists' upcoming concerts and find the best ticket offers.</p>  
         </div> 

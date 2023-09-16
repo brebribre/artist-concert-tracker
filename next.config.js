@@ -15,7 +15,10 @@ const nextConfig = {
             hostname: "www.jambase.com",
           },
         ],
-      }
+      },
+      experimental: {
+        serverActions: true,
+      },
 }
 
 module.exports = nextConfig

@@ -1,23 +1,7 @@
 import React, { useState } from "react";
 
-interface ArtistBio {
-    groupName:string,
-    koreanGroupName:string,
-    debutDate:string,
-    company:string,
-    members:string,
-    originalMembers:string,
-    fanName:string,
-    active:string
-  }
-
-export default function SearchComponent(props:any) {
+export default function Input(props:any) {
     const [value, setValue] = useState("");
-
-    const handleInput = () => {
-        props.handleCallback(value);
-    }
-
 
 
     return (
@@ -29,9 +13,7 @@ export default function SearchComponent(props:any) {
                     placeholder="Search by name..."
                     onChange = {e => setValue(e.target.value)}
                 />
-                <button className=" border-solid border-2 border-purple-600 px-4 text-white bg-purple-600 rounded transform transition duration-200 hover:bg-black hover:border-white " onClick = {handleInput}>
-                    Search
-                </button>
+            
             </div>
         </div>
     );
