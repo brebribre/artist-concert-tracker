@@ -26,7 +26,7 @@ function Topbar(props:any){
             <div className = "col-start-5 items-end">
                 <SignedOut>
                     <Link href="/sign-in">
-                        <button className = "btn btn-blue rounded-sm bg-purple-600 py-1 px-4 hover:bg-blue-600">Sign in</button>
+                        <button className = "btn btn-blue rounded-sm bg-purple-600 py-1 px-4 hover:bg-blue-600 text-slate-200">Sign in</button>
                     </Link>            
                 </SignedOut>
                 <SignedIn>
