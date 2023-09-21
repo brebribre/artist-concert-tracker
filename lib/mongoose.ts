@@ -18,4 +18,14 @@ export const connectToDB = async () => {
     }
 }
 
+export const disconnectToDB = async () => {
+    try{
+        await mongoose.connection.close();
+        isConnected = false;
+        console.log("Disconnected")
+    }catch (error) {
+        console.log(error)
+    }
+}
+
 

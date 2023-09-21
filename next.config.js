@@ -14,6 +14,14 @@ const nextConfig = {
             protocol: "https",
             hostname: "www.jambase.com",
           },
+          {
+            protocol: "https",
+            hostname: "kprofiles.com",
+          },
+          {
+            protocol: "https",
+            hostname: "**",
+          }
         ],
       },
       experimental: {
