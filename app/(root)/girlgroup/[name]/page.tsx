@@ -49,12 +49,19 @@ export default function GroupDetail({
 
  
     return (
-      <div className = "mx-5">
+      <div className = "mx-5 mb-10">
         <div className = "">
-          <h1 className = "text-white text-6xl font-bold mb-5 ">{title}</h1>
-          <div className = "">
-            <Image className = "rounded-md " src={groupImg} alt="group-image" width={500} height={300}/>
+          <div className = "header">
+            <h1 className = "text-white text-6xl font-bold mb-5 ">{title}</h1>
+
+ 
+            <Image className = "rounded-md " src={groupImg} alt="group-image" width={400} height={400}/>
+        
           </div>
+          
+   
+            
+      
            
           <div className = "border-t-2 mt-10 border-purple-500">
               <h1 className = "text-white text-3xl font-bold mt-8 mb-5 ">Members</h1>
