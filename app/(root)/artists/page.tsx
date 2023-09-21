@@ -3,33 +3,32 @@
 import Input from "@/components/forms/input";
 import Alert from "@/components/ui/alert";
 import { useEffect, useState } from "react";
-import {getGirlGroups} from '@/lib/actions/girl-groups.actions'
-import {getBoyGroups} from '@/lib/actions/boy-groups.actions'
+import { getAllGirlGroups } from "@/lib/actions/gg-bios.actions";
+import { getAllBoyGroups } from "@/lib/actions/bg-bios.actions";
+import GroupTag from '@/components/cards/GroupTag'
 
-
-interface Group {
-  name:string,
-  link:string
-}
 
 export default function Artists() {
   const [input, setInput] = useState("");
   const [displayed, setDisplayed] = useState(true);
-  const [boyGroups, setBoyGroups] = useState<Group[]>([]);
-  const [girlGroups, setGirlGroups] = useState<Group[]>([]);
+  const [boyGroups, setBoyGroups] = useState<string[]>([]);
+  const [girlGroups, setGirlGroups] = useState<string[]>([]);
   
   useEffect(() => {
     handleInitial();
   }, [])
 
   const handleInitial = async () => {
-    const tmp:Group[] = await getBoyGroups();
+
+    const girlGroupList:string[] = await getAllGirlGroups();
+    setGirlGroups(girlGroupList);
+
+    const boyGroupList:string[] = await getAllBoyGroups();
+    setBoyGroups(boyGroupList);
 
 
-    setBoyGroups(tmp);
+    
 
-    const tmp2:Group[] = await getGirlGroups();
-    setGirlGroups(tmp2);
   }
 
   return (
@@ -48,9 +47,10 @@ export default function Artists() {
        
             {
             !displayed?girlGroups?.map((item,index)=>{
-              return (<div className = "text-xs md:text-sm mb-1 font-semibold text-slate-500 hover:text-slate-400"><a href={item.link} target='_blank'>{item.name}</a></div>)
+              return (
+                <GroupTag key={index} name={item} href={""} />)
             }):boyGroups?.map((item,index)=>{
-              return (<div className = "text-xs md:text-sm mb-1 font-semibold text-slate-500 hover:text-slate-400"><a href={item.link} target='_blank'>{item.name}</a></div>)
+              return (<GroupTag key={index} name={item} href={""} />)
             })
        
          

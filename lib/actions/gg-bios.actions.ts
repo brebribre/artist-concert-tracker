@@ -1,6 +1,7 @@
 "use server"
 import { connectToDB, disconnectToDB } from "../mongoose"
 import GirlGroupBio from "../models/gg-bios";
+import BoyGroupBio from "../models/bg-bios";
 import { toNamespacedPath } from "path";
 
 interface Member {
@@ -30,7 +31,26 @@ interface Link{
     links:string[]
 }
 
-//connect to mongoose
+export async function getAllGirlGroups(){
+    try {
+        connectToDB();
+        const girlGroup = await GirlGroupBio.find();
+
+        const girlGroupNames = []
+
+        for(let i = 0 ; i < girlGroup.length ; i++){
+            const tmp = girlGroup[i];
+            girlGroupNames.push(tmp.groupName);
+          
+        }
+
+        return girlGroupNames;
+    } catch (error: any) {
+        throw new Error(`Failed to fetch user: ${error.message}`)
+    } 
+    
+}
+
 export async function getGirlGroupHeaderByName(input:string){
     try {
         connectToDB();
@@ -109,7 +129,6 @@ export async function getMembersByGroupName(input:string){
     
     
 }
-
 
 export async function getOfficialLinksByGroupName(input:string){
     try {
