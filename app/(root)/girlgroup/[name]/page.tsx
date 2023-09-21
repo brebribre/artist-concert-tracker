@@ -3,7 +3,7 @@
 import { getGirlGroupHeaderByName, getMembersByGroupName, getOfficialLinksByGroupName } from "@/lib/actions/gg-bios.actions"
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import MemberCard from '@/components/cards/member'
+import MemberCard from '@/components/cards/MemberCard'
 
 interface Link{
   type:string,
@@ -53,10 +53,7 @@ export default function GroupDetail({
         <div className = "">
           <div className = "header">
             <h1 className = "text-white text-6xl font-bold mb-5 ">{title}</h1>
-
- 
-            <Image className = "rounded-md " src={groupImg} alt="group-image" width={400} height={400}/>
-        
+            <Image className = "rounded-md " src={groupImg} alt="group-image" width={400} height={400}/>     
           </div>
           
    
