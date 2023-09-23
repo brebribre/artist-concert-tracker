@@ -43,7 +43,7 @@ export default function GroupDetail({
       setGroupImg(groupHeader.groupImg);
       setMembers(membersTmp);
       setOfficialSites(officialSites);
-      console.log(name);
+   
     }
 
  

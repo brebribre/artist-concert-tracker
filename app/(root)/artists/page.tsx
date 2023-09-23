@@ -37,8 +37,8 @@ export default function Artists() {
         <Alert tag="Coming soon" text="Bookmark artists and get notified for new concerts!" className = "md:w-1/2"/>
         <div className = "">
           <div className = "">
-            <h1 className = "text-2xl font-semibold pb-2 text-slate-100">Know your favorite artists more.</h1>
-            <p className = "text-sm text-slate-500 mb-4">Get a detailed bio of your favorite artist and get live updates on news regarding them.</p>  
+            <h1 className = "text-2xl font-semibold pb-2 text-slate-100">Know your favorite K-pop groups more.</h1>
+            <p className = "text-sm text-slate-500 mb-4">Get a detailed bio of your favorite K-pop group and get live updates on news regarding them.</p>  
           </div> 
           
           <div className = "flex gap-8 py-2 mb-4 mt-2 border-b-2 border-purple-500 md:w-1/2">
