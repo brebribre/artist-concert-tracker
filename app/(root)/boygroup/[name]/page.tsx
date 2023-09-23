@@ -1,6 +1,6 @@
 'use client'
 
-import { getGirlGroupHeaderByName, getMembersByGroupName, getOfficialLinksByGroupName } from "@/lib/actions/gg-bios.actions"
+import { getBoyGroupHeaderByName, getMembersByGroupName, getOfficialLinksByGroupName } from "@/lib/actions/bg-bios.actions"
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import MemberCard from '@/components/cards/MemberCard'
@@ -35,7 +35,7 @@ export default function GroupDetail({
   
     const handleInitial = async () => {
       let name = decodeURI(params.name);
-      const groupHeader = await getGirlGroupHeaderByName(name);
+      const groupHeader = await getBoyGroupHeaderByName(name);
       const membersTmp = await getMembersByGroupName(name);
       const officialSites = await getOfficialLinksByGroupName(name);
       
@@ -43,7 +43,7 @@ export default function GroupDetail({
       setGroupImg(groupHeader.groupImg);
       setMembers(membersTmp);
       setOfficialSites(officialSites);
-      
+      console.log(name);
     }
 
  

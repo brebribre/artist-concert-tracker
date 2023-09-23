@@ -3,6 +3,7 @@ import { connectToDB, disconnectToDB } from "../mongoose"
 import GirlGroupBio from "../models/gg-bios";
 import BoyGroupBio from "../models/bg-bios";
 import { toNamespacedPath } from "path";
+import mongoose, { Schema } from "mongoose";
 
 interface Member {
     stageName:string
@@ -31,20 +32,28 @@ interface Link{
     links:string[]
 }
 
+interface groupLine {
+    groupName: string,
+    key: string,
+  }
+
 export async function getAllGirlGroups(){
     try {
         connectToDB();
-        const girlGroup = await GirlGroupBio.find();
+        const girlGroupDB = await GirlGroupBio.find();
+        const girlGroups = []
 
-        const girlGroupNames = []
-
-        for(let i = 0 ; i < girlGroup.length ; i++){
-            const tmp = girlGroup[i];
-            girlGroupNames.push(tmp.groupName);
-          
+        for(let i = 0 ; i < girlGroupDB.length ; i++){
+            const tmp = girlGroupDB[i];
+            let group:groupLine = {
+                groupName: tmp.groupName,
+                key: tmp._id.toString()
+            }
+            girlGroups.push(group);
+            
         }
 
-        return girlGroupNames;
+        return girlGroups;
     } catch (error: any) {
         throw new Error(`Failed to fetch user: ${error.message}`)
     } 
@@ -61,7 +70,7 @@ export async function getGirlGroupHeaderByName(input:string){
             members : [],
             officialSites : []
         }
-  
+
 
         for(let i = 0 ; i < girlGroup.length ; i++){
             const tmp = girlGroup[i];
@@ -80,6 +89,23 @@ export async function getGirlGroupHeaderByName(input:string){
       
 
         return group;
+    } catch (error: any) {
+        throw new Error(`Failed to create/update user: ${error.message}`)
+    }
+    
+    
+}
+
+export async function getGirlGroupNameById(input:string){
+    try {
+        connectToDB();
+        const girlGroup = await GirlGroupBio.findOne({ _id: new mongoose.Types.ObjectId(input) });
+        if(girlGroup){
+            return girlGroup.groupName;
+        }else{
+            return null;
+        }
+        
     } catch (error: any) {
         throw new Error(`Failed to create/update user: ${error.message}`)
     }
@@ -114,7 +140,7 @@ export async function getMembersByGroupName(input:string){
                 height:tmp.height,
                 img:tmp.img
             }
-            if(member.stageName){
+            if(member.stageName ){
                 output.push(member)
             }
             
@@ -156,7 +182,7 @@ export async function getOfficialLinksByGroupName(input:string){
         }
 
 
-        console.log(output);
+        
 
         return output;
     } catch (error: any) {

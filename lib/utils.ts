@@ -38,3 +38,12 @@ interface Group {
   }
 
 
+  function decodeUrl(url:string) {
+    try {
+      return decodeURIComponent(url.replace(/\+/g, ' '));
+    } catch (error) {
+      // If there's an error decoding the URL, return the original URL.
+      return url;
+    }
+  }
+  

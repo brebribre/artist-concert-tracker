@@ -1,18 +1,21 @@
 'use client'
 
-import Input from "@/components/forms/input";
 import Alert from "@/components/ui/alert";
 import { useEffect, useState } from "react";
 import { getAllGirlGroups } from "@/lib/actions/gg-bios.actions";
 import { getAllBoyGroups } from "@/lib/actions/bg-bios.actions";
 import GroupTag from '@/components/cards/GroupTag'
 
+interface groupLine {
+  groupName: string,
+  key: string,
+}
 
 export default function Artists() {
   const [input, setInput] = useState("");
   const [displayed, setDisplayed] = useState(true);
-  const [boyGroups, setBoyGroups] = useState<string[]>([]);
-  const [girlGroups, setGirlGroups] = useState<string[]>([]);
+  const [boyGroups, setBoyGroups] = useState<groupLine[]>([]);
+  const [girlGroups, setGirlGroups] = useState<groupLine[]>([]);
   
   useEffect(() => {
     handleInitial();
@@ -20,14 +23,12 @@ export default function Artists() {
 
   const handleInitial = async () => {
 
-    const girlGroupList:string[] = await getAllGirlGroups();
+    const girlGroupList:groupLine[] = await getAllGirlGroups();
     setGirlGroups(girlGroupList);
 
-    const boyGroupList:string[] = await getAllBoyGroups();
+    const boyGroupList:groupLine[] = await getAllBoyGroups();
     setBoyGroups(boyGroupList);
 
-
-    
 
   }
 
@@ -48,9 +49,9 @@ export default function Artists() {
             {
             !displayed?girlGroups?.map((item,index)=>{
               return (
-                <GroupTag key={index} name={item} href={""} />)
+                <GroupTag key={item.key} id={item.key} name={item.groupName}  />)
             }):boyGroups?.map((item,index)=>{
-              return (<GroupTag key={index} name={item} href={""} />)
+              return (<GroupTag key={item.key} id={item.key} name={item.groupName}  />)
             })
        
          
