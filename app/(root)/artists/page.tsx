@@ -34,7 +34,7 @@ export default function Artists() {
 
   return (
     <div className = "ml-5 mr-5 pt-1 mb-10">
-        <Alert tag="Coming soon" text="Bookmark artists and get notified for new concerts!" className = "md:w-1/2"/>
+        <Alert tag="Alert" text="Still in development! Some groups may not be updated / inaccessible" className = "md:w-1/2"/>
         <div className = "">
           <div className = "">
             <h1 className = "text-2xl font-semibold pb-2 text-slate-100">Know your favorite K-pop groups more.</h1>

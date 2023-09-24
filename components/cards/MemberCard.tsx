@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { useState } from "react";
 
 export default function MemberCard(props:any) {
+  
+    
     return (
       <div className = "w-full bg-slate-900 rounded-md border-white p-5 text-slate-400 relative">
         <h1 className = "text-3xl xl:text-2xl pb-4 font-bold">{props?.stageName}</h1>
