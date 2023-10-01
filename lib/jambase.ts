@@ -18,10 +18,20 @@ export async function getConcertByGroupName(name:string){
     const options = {method: 'GET', headers: {Accept: 'application/json'}};
 
 
+    const url2 = 'https://www.jambase.com/jb-api/v1/artists?artistName='+ formatName +'&apikey=4ca92282-713c-4912-8a55-066afff640d9';
+    const options2 = {method: 'GET', headers: {Accept: 'application/json'}};
+
+
     try {
         let concerts: Concert[] = [];
         const response = await fetch(url, options);
         const data = await response.json();
+
+        const responseArtist = await fetch(url2, options2);
+        const dataArtist = await responseArtist.json();
+
+        console.log(dataArtist.artists.length)
+        const artistExist = dataArtist.artists.length?true:false;
         const list = data["events"];
        
         let len = list.length;
@@ -63,7 +73,7 @@ export async function getConcertByGroupName(name:string){
                 }
             }
         }
-        
+        console.log(concerts)
         return concerts;
     } catch (error) {
         console.error(error);
@@ -72,4 +82,29 @@ export async function getConcertByGroupName(name:string){
     
 }
 
+
+export async function ArtistExist(name:string){
+    let formatName = name.trim();
+    formatName = formatName.replace(/ /g, "+");
+
+    const url2 = 'https://www.jambase.com/jb-api/v1/artists?artistName='+ formatName +'&apikey=4ca92282-713c-4912-8a55-066afff640d9';
+    const options2 = {method: 'GET', headers: {Accept: 'application/json'}};
+
+
+    try {
+
+        const responseArtist = await fetch(url2, options2);
+        const dataArtist = await responseArtist.json();
+
+        console.log(dataArtist.artists.length)
+        const len = dataArtist.artists.length;
+        
+   
+        return len;
+    } catch (error) {
+        console.error(error);
+    }
+    return [];
+    
+}
 
