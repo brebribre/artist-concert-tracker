@@ -76,18 +76,17 @@ export default function Home() {
 
   return (
     <div className = "ml-5 mr-5 pt-1">
-      <Alert tag="Coming soon" text="Bookmark artists and get notified for new concerts!" className = "md:w-1/2"/>
       <div className = "">
-        <div className = "sm:w-1/2">
-          <h1 className = "text-2xl font-semibold pb-2 text-slate-100">Find Upcoming Concerts.</h1>
-          <p className = "text-sm text-slate-500 mb-4">Never miss another concert again! Look up your favorite artists' upcoming concerts and find the best ticket offers.</p>  
+        <div className = "sm:w-1/2 mt-4">
+          <h1 className = "text-4xl font-semibold pb-2 text-slate-100">Find Upcoming Concerts.</h1>
+          <p className = "text-md text-slate-500 mb-4">Never miss another concert again! Look up your favorite artists' upcoming concerts and find the best ticket offers.</p>  
         </div> 
         <SearchComponent handleCallback={handleInput}/>
-        <p className = "text-xs text-slate-500 mt-2">Don't know who to search yet? Try looking up "Taylor Swift"!</p>
+        <p className = "text-md text-slate-500 mt-4">Don't know who to search yet? Try looking up "Taylor Swift"!</p>
       </div>
     
 
-      {initialAlert?<h1 className = "text-md font-light text-slate-300 pt-4">Searching for "{input}"</h1>:<h1></h1>}
+      {initialAlert?<h1 className = "text-md font-light text-slate-300 pt-4">Searching for "{input}"...</h1>:<h1></h1>}
       {concertExist?<p></p>:<p className="pt-4 text-red-500 text-sm">No upcoming concerts found for the artist. </p>}
       {artistExist?<p></p>:<p className="pt-4 text-red-500 text-sm">No artist found in database, Check your spelling or try writing the original name of the artist instead of acronyms.</p>}
       {concerts?.map((item,index)=>{

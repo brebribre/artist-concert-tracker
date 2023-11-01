@@ -28,9 +28,8 @@ export default function ConcertCard(props:any) {
             />
         </div>
         <div className = "flex-auto md:p-4">
-            <p className ="pb-1 text-slate-400 text-sm"><b>{props.concert?.eventName}</b> | {props.concert?.startDate}</p>
+            <p className ="pb-1 text-slate-400 text-md"><b>{props.concert?.eventName}</b> | {props.concert?.startDate}</p>
             <p className = "text-sm text-slate-400"><b>Venue:</b> {props.concert?.venue}, {props.concert?.city}, {props.concert?.country}</p>
-            <p className = "text-sm text-slate-400 font-bold">Performers: </p>
             <div className = "flex flex-wrap py-1">
                 {
                   props.concert.performer?.map((item:string,index:number)=>{
@@ -43,7 +42,7 @@ export default function ConcertCard(props:any) {
             </div>
             {
               props.concert.offer===""?<p className = "pt-3 text-red-500 text-sm">No ticket found</p>:<a href={props.concert?.offer} target="_blank">
-              <button className="border-solid border-2 border-purple-600 text-sm mt-3 py-1 px-2 text-slate-300 bg-purple-600 rounded transform transition duration-200 hover:bg-black hover:border-white" >
+              <button className="border-solid border-2 border-purple-600 text-xs mt-3 py-1 px-2 text-slate-300 bg-purple-600 rounded transform transition duration-200 hover:bg-black hover:border-white" >
                       Find Offer 
               </button>
             </a>
