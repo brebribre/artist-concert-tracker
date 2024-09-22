@@ -16,6 +16,9 @@ function Topbar(props:any){
                 <Link href="/" className = "flex items-center ml-8 text-slate-400 text-sm transform transition duration-200 hover:text-slate-300">
                     Concerts
                 </Link>
+                <Link href="/artists" className = "flex items-center ml-8 text-slate-400 text-sm transform transition duration-200 hover:text-slate-300">
+                    Artists
+                </Link>
               
                
                 
