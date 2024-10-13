@@ -1,3 +1,5 @@
+Cracker
+
 This project displays both a search method for looking up artists' names to find the corresponding concert tour date, and also a feature to get a biography of all K-Pop idols with a database that I collected via web scrapping.
 
 ## Getting Started
